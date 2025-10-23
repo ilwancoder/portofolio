@@ -4,6 +4,7 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
+import PosterCollection from './sections/PosterCollection'; // <--- Import PosterCollection
 import { useThemeStore } from './stores/useThemeStore';
 import { motion } from 'framer-motion';
 
@@ -13,10 +14,27 @@ function App() {
   const theme = useThemeStore((state) => state.theme);
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname); // <--- Lacak path saat ini
 
   useEffect(() => {
     document.documentElement.className = theme;
   }, [theme]);
+
+  // Handle URL changes, e.g., when clicking an internal link
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    // Menambahkan event listener untuk perubahan hash atau history API
+    // Perlu diuji lebih lanjut bagaimana Vite dev server merefresh halaman
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange); 
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,7 +44,10 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Intersection Observer hanya relevan untuk halaman utama
   useEffect(() => {
+    if (currentPath !== '/') return; // Hanya jalankan observer di halaman utama
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -53,7 +74,36 @@ function App() {
         }
       });
     };
-  }, []);
+  }, [currentPath]); // <--- Rerun effect ketika path berubah
+
+  // Tentukan konten yang akan dirender berdasarkan path
+  const renderContent = () => {
+    if (currentPath === '/portfolio/posters') {
+      return <PosterCollection />;
+    } else if (currentPath === '/') {
+      return (
+        <>
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+        </>
+      );
+    }
+    // Jika path tidak cocok, bisa tampilkan halaman 404 atau redirect ke home
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground">
+        <h1 className="text-6xl font-extrabold mb-4">404</h1>
+        <p className="text-xl text-muted-foreground">Page Not Found</p>
+        <button 
+          onClick={() => window.location.href = '/'} 
+          className="mt-8 px-6 py-3 bg-primary text-primary-foreground rounded-full hover:scale-105 transition-transform"
+        >
+          Go to Home
+        </button>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -66,12 +116,10 @@ function App() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         />
       )}
-      <Header activeSection={activeSection} />
+      {/* Header hanya dirender di halaman utama, atau Anda bisa modifikasi agar selalu ada */}
+      {currentPath === '/' && <Header activeSection={activeSection} />} 
       <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
+        {renderContent()} {/* Render konten berdasarkan path */}
       </main>
     </>
   );
