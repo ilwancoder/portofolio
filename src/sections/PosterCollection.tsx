@@ -82,27 +82,6 @@ const PosterCollection: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0b0b0c] via-[#0f1113] to-[#0b0b0c] text-white relative overflow-x-hidden">
 
-      {/* --- HIGHLIGHT POSTER KIRI ATAS --- */}
-      <motion.div
-        className="fixed top-8 left-8 z-30 rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-md"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <div className="relative w-40 h-56 md:w-52 md:h-72 overflow-hidden">
-          <img
-            src={posters[0].imageUrl}
-            alt={posters[0].title}
-            className="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          <div className="absolute bottom-2 left-2 right-2">
-            <h3 className="text-sm font-semibold">{posters[0].title}</h3>
-            <p className="text-xs text-gray-300">{posters[0].tags?.join(', ')}</p>
-          </div>
-        </div>
-      </motion.div>
-
       {/* --- BACK BUTTON --- */}
       <button
         onClick={() => (window.location.href = '/')}

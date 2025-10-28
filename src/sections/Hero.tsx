@@ -50,7 +50,7 @@ const Hero = () => {
             {/* Teks pendukung lain bisa ditambahkan di sini jika perlu */}
           </p>
           <p className="mt-2 max-w-2xl mx-auto text-base text-muted-foreground">
-            Berfokus pada pembuatan antarmuka web modern menggunakan React dan Vue.js. Memiliki pemahaman dasar di backend dengan Node.js dan Go, serta pengalaman dalam desain UI/UX menggunakan Figma dan Canva.
+            "Ahli dalam membangun antarmuka web modern menggunakan React dan Vue.js. Mampu mengintegrasikan desain UI/UX (Figma/Canva), didukung pemahaman dasar di sisi backend (Node.js, Go)."
           </p>
         </motion.div>
 

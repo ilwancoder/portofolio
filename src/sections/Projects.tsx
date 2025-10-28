@@ -2,13 +2,16 @@
 import ProjectCard from '../components/ProjectCard';
 import { motion } from 'framer-motion';
 import React from 'react';
+import FotoThumbnail1 from '../lib/foto1.png';
+import FotoThumbnail2 from '../lib/foto2.png';
+import FotoThumbnail3 from '../lib/foto3.png';
 
 const projectsData = [
   // --- CARD BARU UNTUK DESAIN POSTER ---
   {
     title: 'Desain Poster & Branding',
     description: 'Kumpulan karya desain poster, banner, dan elemen branding lainnya. Jelajahi portofolio desain visual saya.',
-    imageUrl: '/images/posters_thumbnail.jpg', 
+    imageUrl: FotoThumbnail3, 
     tags: ['Graphic Design', 'Branding', 'Visual Art'],
     internalPath: '/portfolio/posters', // <-- Path internal ke halaman kumpulan poster
   },
@@ -30,14 +33,14 @@ const projectsData = [
   {
     title: 'Game Lost History (Hack n Slash)',
     description: 'Game hack n slash pixel dengan objektif menyelesaikan dungeon, dibuat untuk pameran sekolah. Saya berperan sebagai konseptor dan pembuat aset/elemen desain.',
-    imageUrl: 'https://images.pexels.com/photos/595804/pexels-photo-595804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: FotoThumbnail1,
     tags: ['Godot', 'Canva'],
     liveUrl: '#',
   },
   {
     title: 'Website Class Registration',
     description: 'Website untuk mendata murid dan guru (kelas, ruangan, jurusan) yang berguna untuk absensi. Menyediakan halaman untuk pengelolaan data master.',
-    imageUrl: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: FotoThumbnail2,
     tags: ['Laravel', 'Figma'],
     liveUrl: '#',
   },

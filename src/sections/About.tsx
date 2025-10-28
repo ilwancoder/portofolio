@@ -72,9 +72,7 @@ const About = () => {
           className="lg:w-2/3 text-center lg:text-left"
         >
           <p className="max-w-prose text-lg text-muted-foreground leading-relaxed">
-            Saya adalah seorang Frontend Developer dengan pengalaman dalam pengembangan antarmuka web menggunakan React, Vue.js, dan Laravel.
-            Memiliki pemahaman dasar di sisi Backend menggunakan Node.js dan Go Language, serta aktif dalam bidang desain grafis untuk kebutuhan digital menggunakan Figma dan Canva.
-            Saya juga memiliki ketertarikan pada UI/UX Design, mencakup proses riset pengguna dan analisis data untuk menciptakan tampilan yang efisien dan berorientasi pada pengalaman pengguna.
+            "Saya adalah seorang Pengembang Frontend (Frontend Developer) yang berpengalaman dalam membangun antarmuka web. Saya memiliki pemahaman dasar dalam pengembangan Backend dan juga aktif dalam desain grafis digital. Selain itu, saya tertarik pada Desain UI/UX, meliputi riset pengguna dan analisis data untuk menciptakan tampilan yang efisien dan berorientasi pada pengalaman pengguna."
           </p>
         </motion.div>
       </div>
